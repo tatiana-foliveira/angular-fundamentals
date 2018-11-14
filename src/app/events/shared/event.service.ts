@@ -5,6 +5,11 @@ export class EventService {
   getEvents() {
     return events;
   }
+
+  getEvent(id: number) {
+    debugger;
+    return events.find(event => event.id === id);
+  }
 }
 
 const events = [
