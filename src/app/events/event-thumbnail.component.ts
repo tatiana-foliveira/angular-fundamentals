@@ -2,20 +2,18 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-event-thumbnail',
-  template: `
-    <div class="well hoverwell thumbnail">
-      <h2>{{event.name}}</h2>
-      <div>Date: {{event.date}}</div>
-      <div>Time: {{event.time}}</div>
-      <div>Price: \${{event.price}}</div>
-      <div>
-        <span>Location: {{event.location.address}}</span>
-        <span>{{event.location.city}}, {{event.location.country}}</span>
-      </div>
-</div>
-  `
+  templateUrl: './event-thumbnail.component.html',
+  styleUrls: ['./event-thumbnail.component.css']
 })
 
 export class EventThumbnailComponent {
   @Input() event: any;
+
+  getStartTimeClass() {
+    if (this.event && this.event.time === '8:00 am') {
+      return 'text-red bold';
+    } else {
+      return '';
+    }
+  }
 }
