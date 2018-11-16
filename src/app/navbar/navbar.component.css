@@ -11,3 +11,7 @@
     display: none;
   }
 }
+
+li > a.link-active {
+  color: orange;
+}
