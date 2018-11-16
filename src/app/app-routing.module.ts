@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { EventsListComponent } from './events/events-list.component';
-import { EventDetailsComponent } from './events/event-details/event-details.component';
-import { CreateEventComponent } from './events/create-event/create-event.component';
 import { Error404Component } from './errors/errors.component';
-import { EventRouteActivator } from './events/event-details/event-route-activator.service';
-import { EventsListResolverService } from './events/EventsListResolverService';
+
+import {
+  EventsListResolverService,
+  EventRouteActivator,
+  CreateEventComponent,
+  EventDetailsComponent,
+  EventsListComponent,
+
+} from './events/index';
 
 
 const routes: Routes = [
@@ -14,6 +18,7 @@ const routes: Routes = [
   { path: 'events', component: EventsListComponent, resolve: {events: EventsListResolverService} },
   { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator] },
   { path: '404', component: Error404Component },
+  { path: 'user', loadChildren: './user/user.module#UserModule' },
   { path: '', component: EventsListComponent },
   { path: '**', component: EventsListComponent },
 ];
